@@ -1,0 +1,9 @@
+nginx-vod:
+  build: .
+  ports:
+    - 8080:80
+  volumes:
+    - ./videos:/opt/static/videos
+    - ./nginx.conf:/usr/local/nginx/conf/nginx.conf
+  entrypoint: ["/usr/local/nginx/sbin/nginx"]
+  command: ["-g", "daemon off;"]
