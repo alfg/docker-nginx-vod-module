@@ -4,6 +4,6 @@ nginx-vod:
     - 8080:80
   volumes:
     - ./videos:/opt/static/videos
-    - ./nginx.conf:/usr/local/nginx/conf/nginx.conf
+    - ./nginx.remote.conf:/usr/local/nginx/conf/nginx.conf
   entrypoint: ["/usr/local/nginx/sbin/nginx"]
   command: ["-g", "daemon off;"]
