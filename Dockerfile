@@ -6,10 +6,9 @@ ENV NGINX_VOD_MODULE_VERSION 1.20
 # Tempfix until auth module fixed
 ENV NGINX_AWS_AUTH_VERSION 2.1.1-patch
 
-EXPOSE 1935
 EXPOSE 80
 
-RUN apk add --no-cache wget ca-certificates build-base openssl openssl-dev zlib-dev linux-headers pcre-dev ffmpeg ffmpeg-dev
+RUN apk add --no-cache wget ca-certificates build-base openssl openssl-dev zlib-dev linux-headers pcre-dev ffmpeg ffmpeg-dev gettext
 
 # Get nginx source.
 RUN wget https://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz \
@@ -41,8 +40,11 @@ RUN cd nginx-${NGINX_VERSION} \
   --with-debug
 RUN cd nginx-${NGINX_VERSION} && make && make install
 
+COPY nginx.remote.conf /usr/local/nginx/conf/nginx.conf.template
+
 # Cleanup.
 RUN rm -rf /var/cache/* /tmp/*
 
-# ENTRYPOINT ["/usr/local/nginx/sbin/nginx"]
-CMD ["/usr/local/nginx/sbin/nginx", "-g", "daemon off;"]
+CMD /bin/sh -c "envsubst < /usr/local/nginx/conf/nginx.conf.template > \
+  /usr/local/nginx/conf/nginx.conf && \
+  /usr/local/nginx/sbin/nginx -g 'daemon off;'"
