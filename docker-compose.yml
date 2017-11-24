@@ -2,8 +2,9 @@ nginx-vod:
   build: .
   ports:
     - 8080:80
-  volumes:
-    - ./videos:/opt/static/videos
-    - ./nginx.remote.conf:/usr/local/nginx/conf/nginx.conf
-  entrypoint: ["/usr/local/nginx/sbin/nginx"]
-  command: ["-g", "daemon off;"]
+  environment:
+    - PORT=80
+    - AWS_ACCESS_KEY=
+    - AWS_SIGNING_KEY=
+    - AWS_KEY_SCOPE=
+    - AWS_S3_BUCKET=
