@@ -9,7 +9,7 @@ after_script:
 - docker images
 - docker run -d -p 8080:80 -t ${DOCKER_IMAGE}
 - docker ps -a
-access_success:
+after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
   docker login --username _ --password "$HEROKU_API_KEY" registry.heroku.com;
   docker push registry.heroku.com/vod/web;
