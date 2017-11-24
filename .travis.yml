@@ -11,6 +11,6 @@ after_script:
 - docker ps -a
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
-  docker login --username _ --password "$HEROKU_API_KEY" registry.heroku.com;
-  docker push registry.heroku.com/vod/web;
-  fi
+    docker login --username _ --password "$HEROKU_API_KEY" registry.heroku.com;
+    docker push registry.heroku.com/vod/web;
+    fi
