@@ -7,6 +7,7 @@ import hashlib
 import hmac
 import sys
 from datetime import datetime
+import json
 import requests 
 
 def sign(key, val):
@@ -28,8 +29,8 @@ def updateSignature(hk, signature, scope):
         'accept': "application/vnd.heroku+json; version=3",
     }
 
-    response = requests.request("PATCH", url, data=payload, headers=headers)
-    return response.status
+    response = requests.patch(url, data=json.dumps(payload), headers=headers)
+    return response.status_code
 
 def cmdline_parser():
     parser = argparse.ArgumentParser(description="Generate AWS S3 signing key in it's base64 encoded form")

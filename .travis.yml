@@ -14,7 +14,7 @@ after_script:
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
     python --version;
-    python generate_signing_key_heroku.py -k ${AWS_SECRET_KEY} -r us-west-1 -hk ${HEROKU_API_KEY};
+    python scripts/generate_signing_key_heroku.py -k ${AWS_SECRET_KEY} -r us-west-1 -hk ${HEROKU_API_KEY};
     fi
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
     docker login --username _ --password "$HEROKU_API_KEY" registry.heroku.com;
