@@ -1,14 +1,16 @@
 sudo: required
 language: bash 
 services: docker
+install:
+  - pip install requests 
 env:
-- DOCKER_IMAGE=nginx-vod-module
+  - DOCKER_IMAGE=nginx-vod-module
 script:
-- docker build -t ${DOCKER_IMAGE} .
+  - docker build -t ${DOCKER_IMAGE} .
 after_script:
-- docker images
-- docker run -d -p 8080:80 -t ${DOCKER_IMAGE}
-- docker ps -a
+  - docker images
+  - docker run -d -p 8080:80 -t ${DOCKER_IMAGE}
+  - docker ps -a
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
     python --version;
