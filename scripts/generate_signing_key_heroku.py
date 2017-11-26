@@ -20,9 +20,13 @@ def getSignatureKey(key, dateStamp, regionName, serviceName):
     kSigning = sign(kService, "aws4_request")
     return kSigning
 
+"""
+Updates the AWS_SIGNING_KEY and AWS_KEY_SCOPE env vars in Heroku.
+This is required as the signing keys are only valid for a week.
+"""
 def updateSignature(hk, signature, scope):
     url = "https://api.heroku.com/apps/vod/config-vars"
-    payload = {'TEST': signature}
+    payload = {'AWS_SIGNING_KEY': signature, 'AWS_KEY_SCOPE': scope}
     headers = {
         'authorization': "Bearer " + hk,
         'content-type': "application/json",
@@ -70,8 +74,7 @@ if __name__ == "__main__":
 
     print('Updating signature...')
     scope = '%s/%s/%s/aws4_request' % (ymd, region, service)
-    updateSignature(args.heroku_key, signature, scope)
-
-    print(updateSignature)
+    s = updateSignature(args.heroku_key, signature, scope)
+    print(s)
     # print(signature)
     # print('%s/%s/%s/aws4_request' % (ymd, region, service))
