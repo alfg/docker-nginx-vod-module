@@ -1,5 +1,5 @@
 sudo: required
-language: python 
+language: bash 
 services: docker
 env:
 - DOCKER_IMAGE=nginx-vod-module
@@ -11,7 +11,7 @@ after_script:
 - docker ps -a
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
-      python --version
+    python --version
     fi
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
     docker login --username _ --password "$HEROKU_API_KEY" registry.heroku.com;
