@@ -1,5 +1,5 @@
 sudo: required
-language: bash
+language: python 
 services: docker
 env:
 - DOCKER_IMAGE=nginx-vod-module
