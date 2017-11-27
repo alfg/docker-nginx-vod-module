@@ -1,5 +1,6 @@
 nginx-vod:
   build: .
+  # image: alfg/nginx-vod-module
   ports:
     - 8080:80
   environment:
