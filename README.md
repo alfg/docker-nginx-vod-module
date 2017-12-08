@@ -69,11 +69,11 @@ HTML5 Players for testing.
 * http://video-dev.github.io/hls.js/demo/
 * http://orange-opensource.github.io/hasplayer.js/ 
 
-# Notes
-TODO
 
 # TODO
+* DRM Example
 * Test with S3-compatible APIs (Digital Ocean Spaces)
+
 
 # References
 * https://www.nginx.com
