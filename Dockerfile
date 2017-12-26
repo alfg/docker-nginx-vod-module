@@ -1,6 +1,6 @@
 FROM alpine:3.6
 
-ENV NGINX_VERSION 1.12.2
+ENV NGINX_VERSION 1.13.8
 ENV NGINX_VOD_MODULE_VERSION 1.20
 
 # Tempfix until auth module fixed
