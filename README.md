@@ -3,9 +3,9 @@
 [![Build Status](https://travis-ci.org/alfg/docker-nginx-vod-module.svg?branch=master)](https://travis-ci.org/alfg/docker-nginx-vod-module)
 [![Docker Automated build](https://img.shields.io/docker/automated/alfg/nginx-vod-module.svg)](https://hub.docker.com/r/alfg/nginx-vod-module/builds/)
 
-A Dockerized NGINX build with the `nginx-vod-module` and `ngx-auth-module` for serving VOD content to DASH, HLS, and MSS.
+A Dockerized NGINX build with the `nginx-vod-module` and `ngx_aws_auth` for serving VOD content to DASH, HLS, and MSS.
 
-`nginx-vod-module` is configured in remote-mode with `ngx-auth-module` to securely serve content stored in a private S3 bucket.
+`nginx-vod-module` is configured in remote-mode with `ngx_aws_auth` to securely serve content stored in a private S3 bucket.
 
 
 # Setup
