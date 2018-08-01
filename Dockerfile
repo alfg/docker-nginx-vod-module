@@ -40,7 +40,7 @@ RUN cd nginx-${NGINX_VERSION} \
   --with-debug
 RUN cd nginx-${NGINX_VERSION} && make && make install
 
-COPY nginx.remote.conf /usr/local/nginx/conf/nginx.conf.template
+COPY nginx.mapped.conf /usr/local/nginx/conf/nginx.conf.template
 
 # Cleanup.
 RUN rm -rf /var/cache/* /tmp/*
