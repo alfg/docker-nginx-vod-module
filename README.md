@@ -40,6 +40,11 @@ Upload an MP4 to your S3 bucket and load the manifest to test different outputs:
 * HLS - http://localhost:8080/hls/video.mp4/master.m3u8
 * MSS - http://localhost:8080/mss/video.mp4/manifest
 
+#### Live
+* DASH - http://localhost:8080/live/dash/manifest.mpd
+* HLS - http://localhost:8080/live/hls/master.m3u8
+* MSS - http://localhost:8080/live/mss/manifest
+
 ```
 λ curl -I http://localhost:8080/dash/video.mp4/manifest.mpd
 HTTP/1.1 200 OK
